@@ -72,7 +72,7 @@ public class SpellCheckerController {
     	String[] a=text.split(" ");
     	List<String> textWords=new LinkedList<String>();
     	for(int k=0; k<a.length; k++){
-   			textWords.add(a[k]);
+    		textWords.add(a[k]);
     	}
     	
     	//Ask dictionary to do spellcheck

@@ -56,6 +56,11 @@ public class Dictionary {
 	 * @return list<Word> of words checked in the input sentence
 	 */
 	public List<Word> spellCheckText(List<String> inputTextList){
+		
+		/*
+		
+		//Ricerca normale
+		 
 		List<Word> richWord=new ArrayList<Word>();
 		for(int i=0; i<inputTextList.size(); i++){
 			if(dictionary.contains(inputTextList.get(i))){
@@ -72,6 +77,59 @@ public class Dictionary {
 			}
 		}
 		return richWord;
-	}
+		
+		*/ 
 
+		//Ricerca dicotomica
+		
+		Collections.sort(dictionary, new Comparator<String>(){
+			public int compare(String s1, String s2){
+				return s1.compareTo(s2);
+			}
+		});
+		List<Word> richWord=new ArrayList<Word>();
+		
+		for(int i=0; i<inputTextList.size(); i++){
+			Word w=ricercaDicotomica(dictionary, inputTextList.get(i));
+			if(w==null){
+				//Word isn't in the dictionary
+				Word wtemp=new Word(inputTextList.get(i));
+				wtemp.setCorrect(false);
+				richWord.add(wtemp);
+			}
+			else{
+				//Word is in the dictionary
+				Word wtemp=new Word(inputTextList.get(i));
+				wtemp.setCorrect(true);
+				richWord.add(wtemp);					
+			}
+		}
+		return richWord;
+	
+	}
+	
+	public Word ricercaDicotomica(List<String> listD, String word){
+		int low=0;
+		int high=listD.size();
+		
+		while (low<=high) {
+			int mid=(low+high)/2;
+			if(listD.get(mid).compareTo(word)==0){
+				Word w=new Word(word);
+				return w;
+		    }
+			else {
+				if (listD.get(mid).compareTo(word)<0){
+					//word is lexicographically less than the string argument
+					low=mid+1;
+				}
+				else {
+					//word is lexicographically greater than the string argument
+					high=mid-1;
+				}
+			}	
+		}
+		return null;
+	}
+	
 }
