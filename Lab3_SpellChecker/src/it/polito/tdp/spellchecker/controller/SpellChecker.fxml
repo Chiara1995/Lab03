@@ -1,7 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
-	
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.spellchecker.controller.SpellCheckerController">
-	<!-- TODO Add Nodes -->
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.spellchecker.controller.SpellCheckerController">
+   <top>
+      <Label text="Lab3_SpellChecker" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </Label>
+   </top>
+   <center>
+      <VBox spacing="15.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Label text="Choose the language:" />
+                  <ComboBox fx:id="cmbLanguage" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <TextArea fx:id="txtInput" />
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button fx:id="btnSpellCheck" alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#doSpellCheck" text="Spell Check">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Label text="Wrong words" />
+            <TextArea fx:id="txtOutput" editable="false" />
+            <HBox alignment="CENTER_RIGHT" spacing="15.0">
+               <children>
+                  <Label fx:id="txtErrors" text="The text contains 0 errors" textFill="#f51818" />
+                  <Button fx:id="btnClear" mnemonicParsing="false" onAction="#doClearText" text="Clear Text" />
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </HBox>
+            <Label fx:id="txtSeconds" text="Spell check completed in 0 seconds" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
 </BorderPane>
