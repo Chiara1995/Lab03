@@ -13,6 +13,7 @@ public class Dictionary {
 	
 	/**
 	 * Download the correct dictionary
+	 * @param language language of the dictionary to load (English or Italian)
 	 */
 	public void loadDictionary(String language){
 		if(language.compareTo("English")==0){
@@ -49,17 +50,24 @@ public class Dictionary {
 		}
 	}
 	
+	/**
+	 * Spellcheck of text
+	 * @param inputTextList list<String> of words in the input sentence
+	 * @return list<Word> of words checked in the input sentence
+	 */
 	public List<Word> spellCheckText(List<String> inputTextList){
 		List<Word> richWord=new ArrayList<Word>();
 		for(int i=0; i<inputTextList.size(); i++){
 			if(dictionary.contains(inputTextList.get(i))){
 				//Word is in the dictionary
-				Word w=new Word(inputTextList.get(i), true);
+				Word w=new Word(inputTextList.get(i));
+				w.setCorrect(true);
 				richWord.add(w);
 			}
 			else{
 				//Word isn't in the dictionary
-				Word w=new Word(inputTextList.get(i), false);
+				Word w=new Word(inputTextList.get(i));
+				w.setCorrect(false);
 				richWord.add(w);
 			}
 		}

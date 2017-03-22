@@ -23,10 +23,10 @@
             <HBox alignment="CENTER_LEFT" spacing="20.0">
                <children>
                   <Label text="Choose the language:" />
-                  <ComboBox fx:id="cmbLanguage" prefWidth="150.0" />
+                  <ComboBox fx:id="cmbLanguage" prefHeight="31.0" prefWidth="131.0" />
                </children>
             </HBox>
-            <TextArea fx:id="txtInput" />
+            <TextArea fx:id="txtInput" prefHeight="227.0" prefWidth="550.0" />
             <HBox alignment="CENTER_RIGHT">
                <children>
                   <Button fx:id="btnSpellCheck" alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#doSpellCheck" text="Spell Check">
@@ -43,14 +43,14 @@
             <TextArea fx:id="txtOutput" editable="false" />
             <HBox alignment="CENTER_RIGHT" spacing="15.0">
                <children>
-                  <Label fx:id="txtErrors" text="The text contains 0 errors" textFill="#f51818" />
+                  <Label fx:id="txtErrors" text="The text contains 0 errors" textFill="#f51818" visible="false" />
                   <Button fx:id="btnClear" mnemonicParsing="false" onAction="#doClearText" text="Clear Text" />
                </children>
                <padding>
                   <Insets right="10.0" />
                </padding>
             </HBox>
-            <Label fx:id="txtSeconds" text="Spell check completed in 0 seconds" />
+            <Label fx:id="txtSeconds" text="Spell check completed in 0 seconds" visible="false" />
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

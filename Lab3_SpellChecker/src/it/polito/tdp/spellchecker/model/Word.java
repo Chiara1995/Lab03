@@ -5,9 +5,9 @@ public class Word {
 	private String word;
 	private boolean correct;
 	
-	public Word(String word, boolean correct){
+	public Word(String word){
 		this.word=word;
-		this.correct=correct;
+		correct=false;
 	}
 
 	/**
@@ -67,6 +67,14 @@ public class Word {
 		} else if (!word.equals(other.word))
 			return false;
 		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return word;
 	}
 	
 }
