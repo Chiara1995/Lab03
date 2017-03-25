@@ -65,16 +65,18 @@ public class SpellCheckerController {
     	cmbLanguage.setDisable(false);
 	}
     
+        
     @FXML
     void doSpellCheck(ActionEvent event) {
     	//Download data from view
-    	String text=txtInput.getText().replaceAll("[\\p{Punct}]", "").toLowerCase();
+    	String text=txtInput.getText().replaceAll("[\\p{Punct}]", "").toLowerCase().trim();
+    	text=text.replaceAll("( )+", " ");
     	String[] a=text.split(" ");
     	List<String> textWords=new LinkedList<String>();
     	for(int k=0; k<a.length; k++){
     		textWords.add(a[k]);
     	}
-    	
+    	    	
     	//Ask dictionary to do spellcheck
     	dictionary.loadDictionary(cmbLanguage.getValue());
     	double t1=System.nanoTime();
