@@ -23,7 +23,7 @@ public class Dictionary {
 				BufferedReader br=new BufferedReader(fr);
 				String word;
 				while((word=br.readLine())!=null){
-					//Add word to EnglishDictionary
+					//Add words from English Dictionary
 					dictionary.add(word.toLowerCase());					
 				}
 				br.close();
@@ -39,7 +39,7 @@ public class Dictionary {
 				BufferedReader br=new BufferedReader(fr);
 				String word;
 				while((word=br.readLine())!=null){
-					//Add word to ItalianDictionary
+					//Add words from Italian Dictionary
 					dictionary.add(word.toLowerCase());
 				}
 				br.close();
@@ -81,7 +81,7 @@ public class Dictionary {
 		*/ 
 
 		//Ricerca dicotomica
-		
+				
 		Collections.sort(dictionary, new Comparator<String>(){
 			public int compare(String s1, String s2){
 				return s1.compareTo(s2);
@@ -90,6 +90,7 @@ public class Dictionary {
 		List<Word> richWord=new ArrayList<Word>();
 		
 		for(int i=0; i<inputTextList.size(); i++){
+			
 			Word w=ricercaDicotomica(dictionary, inputTextList.get(i));
 			if(w==null){
 				//Word isn't in the dictionary

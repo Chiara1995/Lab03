@@ -19,7 +19,7 @@ import javafx.scene.control.TextArea;
 
 public class SpellCheckerController {
 	
-	Dictionary dictionary; 
+	private Dictionary dictionary; 
 	int numError;
 	
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -76,18 +76,25 @@ public class SpellCheckerController {
     	for(int k=0; k<a.length; k++){
     		textWords.add(a[k]);
     	}
+    	
+    	/*
+    	 * StringTokenizer st = new StringTokenizer(inputText, " ");
+    	 * while (st.hasMoreTokens()) {
+    	 * 		listaDaCorreggere.add(st.nextToken().replaceAll("[ \\p{Punct}]", "").trim().toLowerCase());
+    	 * }
+    	 */
     	    	
     	//Ask dictionary to do spellcheck
     	dictionary.loadDictionary(cmbLanguage.getValue());
-    	double t1=System.nanoTime();
+    	long t1=System.nanoTime();
     	List<Word> richWords=dictionary.spellCheckText(textWords);
-    	double t2=System.nanoTime();
+    	long t2=System.nanoTime();
     	
     	//Update view
     	numError=0;
     	for(int i=0; i<richWords.size(); i++){
-    		if(richWords.get(i).isCorrect()==false){
-    			//incorrect word
+    		if(!richWords.get(i).isCorrect()){
+    			//Incorrect word
     			txtOutput.appendText(richWords.get(i)+"\n");
     			numError++;
     		}
